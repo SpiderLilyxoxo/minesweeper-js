@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+  border-width: 0px;
+}
+
+body {
+  margin: 0;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+  flex-direction: column;
+  color: white;
+}
+
+
+
+.window {
+  width: 272px;
+  height: 316px;
+  margin: 20px;
+  background: url("./assets/minesweeper.png");
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  align-items: center;
+}
+
+/* header --------------------------------------------------*/
+
+.header {
+  margin-top: 9px;
+  width: 256px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #BDBDBD;
+}
+
+.number-of-mines {
+  display: flex;
+  margin-left: 8.5px;
+}
+
+.gameFace {
+  width: 26px;
+  height: 26px;
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: 0 -24px;
+  cursor: pointer;
+}
+
+.sad-face { 
+  background-position: 31px -24px;
+}
+
+.cool-face { 
+  background-position: 58px -24px;
+}
+
+.scared-face { 
+  background-position: -54px -24px;
+}
+
+.timer-state {
+  display: flex;
+  margin-right: 8.5px;
+}
+
+.seconds {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  width: 12px;
+  height: 24px;
+}
+
+.sec-1 {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: 13px 0;
+}
+.sec-2 {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: 13px 0;
+}
+.sec-3 {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: 13px 0;
+}
+
+/*  board and tiles --------------------------------------------------*/
+
+.board-box {
+  background-color: #BDBDBD;
+  margin-top: 50.7px;
+  width: 256px;
+  height: 256px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+}
+
+.board {
+  display: inline-grid;
+  grid-template-columns: repeat(var(--size), 16px);
+  grid-template-rows: repeat(var(--size), 16px);
+}
+
+.board > * {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  user-select: none;
+}
+
+.board > [data-status="hidden"] {
+  cursor: pointer;
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: 0 -52px;
+}
+
+.board > [data-status="mine"] {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  width: 14px;
+  height: 14px;
+  background-position: -87px -52px;
+  margin-left: 1.6px;
+}
+
+.board > [data-status="blow"] {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: -103px -52px;
+}
+
+.board > [data-status="number"] {
+  background-color: #BDBDBD;
+}
+
+.board> [data-status="marked"] {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: -34px -52px;
+  cursor: pointer;
+}
+
+.board> [data-status="marked_not_sure"] {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: -51px -52px;
+  cursor: pointer;
+}
+
+/* tile-numbers --------------------------------------------------*/
+
+.tile {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: -18px -52px;
+}
+
+.near-mines-0 {
+  background-position: -12px -51px;
+  width: 14px;
+  height: 14px;
+}
+.near-mines-1 {
+  background-position: -1px -69px;
+  width: 14px;
+  height: 14px;
+}
+.near-mines-2 {
+  background-position: -18px -69px;
+  width: 14px;
+  height: 14px;
+}
+.near-mines-3 {
+  background-position: -35px -69px;
+  width: 14px;
+  height: 14px;
+}
+.near-mines-4 {
+  background-position: -52px -69px;
+  width: 14px;
+  height: 14px;
+}
+.near-mines-5 {
+  background-position: -69px -69px;
+  width: 14px;
+  height: 14px;
+}
+.near-mines-6 {
+  background-position: -86px -69px;
+  width: 14px;
+  height: 14px;
+}
+.near-mines-7 {
+  background-position: -103px -69px;
+  width: 14px;
+  height: 14px;
+}
+.near-mines-8 {
+  background-position: -103px -69px;
+  width: 14px;
+  height: 14px;
+}
+
+/* mines --------------------------------------------------*/
+
+.number {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  width: 12px;
+  height: 24px;
+}
+
+.number-0 {
+  background-position: 13px 0;
+}
+.number-1 {
+  background-position: 0px 0;
+}
+.number-2 {
+  background-position: -14px 0;
+}
+.number-3 {
+  background-position: -28px 0;
+}
+.number-4 {
+  background-position: -42px 0;
+}
+.number-5 {
+  background-position: -56px 0;
+}
+.number-6 {
+  background-position: -70px 0;
+}
+.number-7 {
+  background-position: -84px 0;
+}
+.number-8 {
+  background-position: -98px 0;
+}
+.number-9 {
+  background-position: 27px 0;
+}
