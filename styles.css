@@ -138,6 +138,11 @@ body {
   background-position: -103px -52px;
 }
 
+.board > [data-status="marked-mine"] {
+  background: url("./assets/minesweeper-sprites_9TPZzv3.png");
+  background-position: 18px -52px;
+}
+
 .board > [data-status="number"] {
   background-color: #BDBDBD;
 }

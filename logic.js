@@ -5,6 +5,7 @@ export const TILE_STATUSES = {
     MINE: "mine",
     NUMBER: "number",
     MARKED: "marked",
+    MARKED_MINE: "marked-mine",
     MARKED_NOT_SURE: "marked_not_sure",
 }
 
