@@ -119,8 +119,9 @@ function checkGameEnd(tile) {
    if (win) {
       gameFace.classList.add("cool-face")
    } else if (lose) {
+      let markedMinesCount = 0
+      minesArray = []
       tile.element.dataset.status  = "blow"
-      minesArray = [0, 0]
       minesTimer()
       gameFace.classList.add("sad-face")
       board.forEach(row => {
@@ -128,8 +129,11 @@ function checkGameEnd(tile) {
             tile.status === TILE_STATUSES.MARKED_NOT_SURE ? tile.status = TILE_STATUSES.HIDDEN : null;
             (tile.status === TILE_STATUSES.MARKED && tile.mine) ? tile.status = TILE_STATUSES.MARKED_MINE : null;
             tile.mine ? revealTile(board, tile) : null;
+            tile.status === TILE_STATUSES.MARKED_MINE ? markedMinesCount++ : null;
          })
       })
+      minesArray = ("" + (NUMBER_OF_MINES - markedMinesCount)).split("").map(e => e);
+      minesTimer()
    }
 }
 
