@@ -62,6 +62,10 @@ body {
   background-position: 58px -24px;
 }
 
+.clickedface {
+  background-position: -27px -24px;
+}
+
 .scared-face { 
   background-position: -54px -24px;
 }

@@ -166,6 +166,27 @@ gameFace.addEventListener("click", (e) => {
    elemThird.className = "number number-0"
 })
 
+gameFace.addEventListener("contextmenu", (e) => {
+   e.preventDefault()
+})
+
+gameFace.addEventListener("mousedown", (e) => {
+   e.preventDefault()
+   switch (e.button) {
+      case 0: {
+         gameFace.classList.add("clickedface")
+         break;
+      };
+      case 2: {
+         break;
+      }
+   }
+})
+gameFace.addEventListener("mouseup", (e) => {
+   e.preventDefault()
+   gameFace.classList.remove("clickedface")
+})
+
 // Таймер секунд___________________________
    
 const stopwatch = (item, elem) => {
