@@ -125,10 +125,9 @@ function checkGameEnd(tile) {
       gameFace.classList.add("sad-face")
       board.forEach(row => {
          row.forEach(tile => {
-            if (tile.status === TILE_STATUSES.MARKED) tile.status = TILE_STATUSES.MARKED_MINE;
-            if (tile.mine) {
-               revealTile(board, tile)
-            }
+            tile.status === TILE_STATUSES.MARKED_NOT_SURE ? tile.status = TILE_STATUSES.HIDDEN : null;
+            (tile.status === TILE_STATUSES.MARKED && tile.mine) ? tile.status = TILE_STATUSES.MARKED_MINE : null;
+            tile.mine ? revealTile(board, tile) : null;
          })
       })
    }

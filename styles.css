@@ -140,7 +140,7 @@ body {
 
 .board > [data-status="marked-mine"] {
   background: url("./assets/minesweeper-sprites_9TPZzv3.png");
-  background-position: 18px -52px;
+  background-position: 19px -52px;
 }
 
 .board > [data-status="number"] {
