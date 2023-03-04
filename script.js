@@ -1,5 +1,5 @@
 
-import { TILE_STATUSES, createBoard, markTile, revealTile, checkWin, checkLose, checkRestart, nearbyTiles} from "./logic.js";
+import { TILE_STATUSES, createBoard, markTile, revealTile, checkWin, checkLose, checkRestart} from "./logic.js";
 
 const BOARD_SIZE = 16;
 let NUMBER_OF_MINES = 40;
@@ -18,9 +18,12 @@ function generateBoard() {
       tile.element.addEventListener("click", () => {
          if (GAME_START === true) {
             if (tile.mine) {
-               const adjacentTiles = nearbyTiles(board, tile)
-               const mines = adjacentTiles.filter(t => t.mine === false)
-               const randomTile = mines[Math.floor(Math.random() * mines.length)]
+               let emptyTiles = []
+               board.forEach(row => {
+                  let rowArray = row.filter(tile =>  tile.mine === false)
+                  rowArray.forEach(i => emptyTiles.push(i))
+               })
+               const randomTile = emptyTiles[Math.floor(Math.random() * emptyTiles.length)]
                randomTile.mine = true
             }
             tile.mine = false
@@ -34,7 +37,6 @@ function generateBoard() {
       })
       tile.element.addEventListener("mousedown", (e) => {
          e.preventDefault()
-         
          if (GAME_START === true || tile.status !== "hidden") {
             return
          } else {
@@ -65,7 +67,7 @@ boardElem.style.setProperty("--size", BOARD_SIZE)
 
 generateBoard()
 
-// Кол-во оставшшихся бомб___________________
+// Таймер бомб___________________
 
 export let minesArray = ("" + NUMBER_OF_MINES).split("").map(e => e);
 
@@ -114,7 +116,6 @@ function checkGameEnd(tile) {
       boardElem.removeEventListener("contextmenu", stopProp, {capture: true})
       GAME_START = true
    }
-
    if (win) {
       gameFace.classList.add("cool-face")
    } else if (lose) {

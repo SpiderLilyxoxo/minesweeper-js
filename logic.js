@@ -8,6 +8,8 @@ export const TILE_STATUSES = {
     MARKED_NOT_SURE: "marked_not_sure",
 }
 
+// Построение доски__________________________________
+
 export function createBoard(boardSize, numberOfMines) {
     let board = []
     let minePositions = getMinePositions(boardSize, numberOfMines)
@@ -37,6 +39,8 @@ export function createBoard(boardSize, numberOfMines) {
     return board
 }
 
+// Отметить клетку__________________________________
+
 export function markTile(tile) {
     if (minesArray[0] === "0") {
         switch (tile.status) {
@@ -62,6 +66,8 @@ export function markTile(tile) {
      }
 }
 
+// Раскрыть клетку__________________________________
+
 export function revealTile(board, tile) {
     if (tile.status !== TILE_STATUSES.HIDDEN) {
         return
@@ -82,6 +88,8 @@ export function revealTile(board, tile) {
     }
 }
 
+// Расположение мин__________________________________
+
 function getMinePositions(boardSize, numberOfMines) {
     const positions = []
 
@@ -96,6 +104,8 @@ function getMinePositions(boardSize, numberOfMines) {
     }
     return positions
 }
+
+// Статус игры__________________________________
 
 export function checkWin(board) {
     return board.every(row => {
@@ -121,6 +131,8 @@ export function checkRestart(board) {
     })
 }
 
+// Отображение кол-ва бомб рядом с клеткой__________________________________
+
 function positionMatch(a, b) {
     return a.x === b.x && a.y === b.y
 }
@@ -129,9 +141,8 @@ function randomNumber(size) {
     return Math.floor(Math.random() * size)
 }
 
-export function nearbyTiles(board, {x, y}) {
+function nearbyTiles(board, {x, y}) {
     const tiles = []
-
     for (let xOffset = -1; xOffset <=1; xOffset++){
         for (let yOffset = -1; yOffset <=1; yOffset++) {
             const tile = board[x + xOffset]?.[y + yOffset]
